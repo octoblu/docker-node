@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+
+const { version } = require('/usr/src/app/package.json')
+
+fs.writeFileSync('/usr/share/nginx/html/version', JSON.stringify({ version }))
