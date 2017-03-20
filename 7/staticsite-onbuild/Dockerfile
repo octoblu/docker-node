@@ -5,6 +5,9 @@ RUN apk add --no-cache curl nginx jq bash
 EXPOSE 80
 HEALTHCHECK CMD curl --fail http://localhost:80/healthcheck || exit 1
 
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
 RUN mkdir -p /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -12,8 +15,7 @@ COPY conf.d/* /etc/nginx/conf.d/
 COPY write-version /usr/local/bin/write-version
 
 ONBUILD ARG NPM_TOKEN
-ONBUILD RUN if [ ! -z ${NPM_TOKEN} ]; then echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc; fi
-ONBUILD WORKDIR /usr/src/app
+ONBUILD RUN if [ -n "${NPM_TOKEN}" ]; then echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc; fi
 ONBUILD COPY package.json yarn.lock /usr/src/app/
 ONBUILD RUN write-version
 ONBUILD RUN yarn --no-progress --no-emoji --production && yarn cache clean
