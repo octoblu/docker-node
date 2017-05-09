@@ -6,7 +6,7 @@ steps:
     description: Building the image [7-alpine-gyp]...
     working_directory: ${{main_clone}}
     dockerfile: 7/alpine-gyp/Dockerfile
-    image_name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    image_name: ${{CF_REPO_OWNER}}/node
     tag: '7-alpine-gyp'
 
   push_to_registry_7_alpine_gyp:
@@ -20,7 +20,7 @@ steps:
     description: Building the image [7-staticsite-onbuild]...
     working_directory: ${{main_clone}}
     dockerfile: 7/staticsite-onbuild/Dockerfile
-    image_name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    image_name: ${{CF_REPO_OWNER}}/node
     tag: '7-staticsite-onbuild'
 
   push_to_registry_7_staticsite_onbuild:
@@ -34,7 +34,7 @@ steps:
     description: Building the image [7-webservice-onbuild]...
     working_directory: ${{main_clone}}
     dockerfile: 7/webservice-onbuild/Dockerfile
-    image_name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    image_name: ${{CF_REPO_OWNER}}/node
     tag: '7-webservice-onbuild'
 
   push_to_registry_7_webservice_onbuild:
@@ -48,7 +48,7 @@ steps:
     description: Building the image [7-worker-onbuild]...
     working_directory: ${{main_clone}}
     dockerfile: 7/worker-onbuild/Dockerfile
-    image_name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    image_name: ${{CF_REPO_OWNER}}/node
     tag: '7-worker-onbuild'
 
   push_to_registry_7_worker_onbuild:
