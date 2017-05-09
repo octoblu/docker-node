@@ -1,0 +1,58 @@
+version: '1.0'
+steps:
+
+  build_image_7_alpine_gyp:
+    type: build
+    description: Building the image [7-alpine-gyp]...
+    working_directory: ${{main_clone}}
+    dockerfile: 7/alpine-gyp/Dockerfile
+    image_name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    tag: '7-alpine-gyp'
+
+  push_to_registry_7_alpine_gyp:
+    title: Pushing to Docker Registry [7-alpine-gyp]...
+    type: push
+    candidate: '${{build_image_7_alpine_gyp}}'
+    tag: '7-alpine-gyp'
+
+  build_image_7_staticsite_onbuild:
+    type: build
+    description: Building the image [7-staticsite-onbuild]...
+    working_directory: ${{main_clone}}
+    dockerfile: 7/staticsite-onbuild/Dockerfile
+    image_name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    tag: '7-staticsite-onbuild'
+
+  push_to_registry_7_staticsite_onbuild:
+    title: Pushing to Docker Registry [7-staticsite-onbuild]...
+    type: push
+    candidate: '${{build_image_7_staticsite_onbuild}}'
+    tag: '7-staticsite-onbuild'
+
+  build_image_7_webservice_onbuild:
+    type: build
+    description: Building the image [7-webservice-onbuild]...
+    working_directory: ${{main_clone}}
+    dockerfile: 7/webservice-onbuild/Dockerfile
+    image_name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    tag: '7-webservice-onbuild'
+
+  push_to_registry_7_webservice_onbuild:
+    title: Pushing to Docker Registry [7-webservice-onbuild]...
+    type: push
+    candidate: '${{build_image_7_webservice_onbuild}}'
+    tag: '7-webservice-onbuild'
+
+  build_image_7_worker_onbuild:
+    type: build
+    description: Building the image [7-worker-onbuild]...
+    working_directory: ${{main_clone}}
+    dockerfile: 7/worker-onbuild/Dockerfile
+    image_name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    tag: '7-worker-onbuild'
+
+  push_to_registry_7_worker_onbuild:
+    title: Pushing to Docker Registry [7-worker-onbuild]...
+    type: push
+    candidate: '${{build_image_7_worker_onbuild}}'
+    tag: '7-worker-onbuild'
