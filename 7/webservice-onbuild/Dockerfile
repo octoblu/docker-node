@@ -13,4 +13,4 @@ ONBUILD COPY package.json yarn.lock /usr/src/app/
 ONBUILD RUN yarn --no-progress --no-emoji --production && yarn cache clean
 ONBUILD COPY . /usr/src/app
 
-CMD [ "node", "--max-executable-size=96", "--max-old-space-size=128", "--max-semi-space-size=2", "command.js" ]
+CMD [ "node", "--max-executable-size=256", "--max-old-space-size=128", "--max-semi-space-size=2", "command.js" ]
