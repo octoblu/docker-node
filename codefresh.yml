@@ -56,3 +56,59 @@ steps:
     type: push
     candidate: '${{build_image_7_worker_onbuild}}'
     tag: '7-worker-onbuild'
+
+  build_image_8_alpine_gyp:
+    type: build
+    description: Building the image [8-alpine-gyp]...
+    working_directory: ${{main_clone}}/8/alpine-gyp
+    dockerfile: Dockerfile
+    image_name: ${{CF_REPO_OWNER}}/node
+    tag: '8-alpine-gyp'
+
+  push_to_registry_8_alpine_gyp:
+    title: Pushing to Docker Registry [8-alpine-gyp]...
+    type: push
+    candidate: '${{build_image_8_alpine_gyp}}'
+    tag: '8-alpine-gyp'
+
+  build_image_8_staticsite_onbuild:
+    type: build
+    description: Building the image [8-staticsite-onbuild]...
+    working_directory: ${{main_clone}}/8/staticsite-onbuild
+    dockerfile: Dockerfile
+    image_name: ${{CF_REPO_OWNER}}/node
+    tag: '8-staticsite-onbuild'
+
+  push_to_registry_8_staticsite_onbuild:
+    title: Pushing to Docker Registry [8-staticsite-onbuild]...
+    type: push
+    candidate: '${{build_image_8_staticsite_onbuild}}'
+    tag: '8-staticsite-onbuild'
+
+  build_image_8_webservice_onbuild:
+    type: build
+    description: Building the image [8-webservice-onbuild]...
+    working_directory: ${{main_clone}}/8/webservice-onbuild
+    dockerfile: Dockerfile
+    image_name: ${{CF_REPO_OWNER}}/node
+    tag: '8-webservice-onbuild'
+
+  push_to_registry_8_webservice_onbuild:
+    title: Pushing to Docker Registry [8-webservice-onbuild]...
+    type: push
+    candidate: '${{build_image_8_webservice_onbuild}}'
+    tag: '8-webservice-onbuild'
+
+  build_image_8_worker_onbuild:
+    type: build
+    description: Building the image [8-worker-onbuild]...
+    working_directory: ${{main_clone}}/8/worker-onbuild
+    dockerfile: Dockerfile
+    image_name: ${{CF_REPO_OWNER}}/node
+    tag: '8-worker-onbuild'
+
+  push_to_registry_8_worker_onbuild:
+    title: Pushing to Docker Registry [8-worker-onbuild]...
+    type: push
+    candidate: '${{build_image_8_worker_onbuild}}'
+    tag: '8-worker-onbuild'
