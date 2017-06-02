@@ -1,4 +1,4 @@
-FROM local/node:8-alpine-gyp
+FROM octoblu/node:8-alpine-gyp
 
 EXPOSE 80
 HEALTHCHECK CMD curl --fail http://localhost:80/healthcheck || exit 1
