@@ -13,6 +13,7 @@ RUN mkdir -p /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY conf.d/* /etc/nginx/conf.d/
 COPY write-version /usr/local/bin/write-version
+COPY run-nginx /usr/local/bin/run-nginx
 
 ONBUILD ARG NPM_TOKEN
 ONBUILD RUN if [ -n "${NPM_TOKEN}" ]; then echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc; fi
@@ -26,4 +27,4 @@ ONBUILD RUN rm -rf /usr/src/app/*
 # Fix codefresh tests
 ONBUILD COPY package.json /usr/src/app/
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["run-nginx"]
